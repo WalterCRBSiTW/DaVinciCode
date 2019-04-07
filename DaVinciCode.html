@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+TC"
+      rel="stylesheet"
+    />
+    <title>DaVinciCode</title>
+    <style>
+      body {
+        background-color: black;
+        font-family: "Noto Sans TC", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fliud">
+      <div class="row justify-content-center mt-3">
+        <div col-12>
+          <h1 class="text-center text-warning">終極密碼</h1>
+          <table
+            class="table border-radius rounded text-warning"
+            style="width: 500px;"
+          >
+            <thead>
+              <tr>
+                <td colspan="3" class="text-center border-0">
+                  <span id="show">0~99</span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="text-center border-0">
+                  <span id="mes"></span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="border-0 text-secondary">
+                  <input
+                    id="input"
+                    class=" form-control text-center text-white"
+                    style="background-color: rgb(255, 255, 255, 0.2);"
+                  />
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width:33%;" class="text-center border-0">
+                  <button
+                    type="button"
+                    class="num btn btn-outline-secondary rounded btn-block"
+                    style=" height:50px;"
+                    value="9"
+                  >
+                    9
+                  </button>
+                </td>
+                <td style="width:33%" class="text-center border-0">
+                  <button
+                    type="button"
+                    class="num btn btn-outline-secondary rounded btn-block"
+                    style=" height:50px;"
+                    value="8"
+                  >
+                    8
+                  </button>
+                </td>
+                <td style="width:33%" class="text-center border-0">
+                  <button
+                    type="button"
+                    class="num btn btn-outline-secondary rounded btn-block"
+                    style=" height:50px;"
+                    value="7"
+                  >
+                    7
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td style="width:33%" class="text-center border-0">
+                  <button
+                    type="button"
+                    class="num btn btn-outline-secondary rounded btn-block"
+                    style=" height:50px;"
+                    value="6"
+                  >
+                    6
+                  </button>
+                </td>
+                <td style="width:33%" class="text-center border-0">
+                  <button
+                    type="button"
+                    class="num btn btn-outline-secondary rounded btn-block"
+                    style=" height:50px;"
+                    value="5"
+                  >
+                    5
+                  </button>
+                </td>
+                <td style="width:33%" class="text-center border-0">
+                  <button
+                    type="button"
+                    class="num btn btn-outline-secondary rounded btn-block"
+                    style=" height:50px;"
+                    value="4"
+                  >
+                    4
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td style="width:33%" class="text-center border-0">
+                  <button
+                    type="button"
+                    class="num btn btn-outline-secondary rounded btn-block"
+                    style=" height:50px;"
+                    value="3"
+                  >
+                    3
+                  </button>
+                </td>
+                <td style="width:33%" class="text-center border-0">
+                  <button
+                    type="button"
+                    class="num btn btn-outline-secondary rounded btn-block"
+                    style=" height:50px;"
+                    value="2"
+                  >
+                    2
+                  </button>
+                </td>
+                <td style="width:33%" class="text-center border-0">
+                  <button
+                    type="button"
+                    class="num btn btn-outline-secondary rounded btn-block"
+                    style=" height:50px;"
+                    value="1"
+                  >
+                    1
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td style="width:33%" class="text-center border-0">
+                  <button
+                    type="button"
+                    class="btn btn-outline-info rounded btn-block"
+                    style=" height:50px;"
+                    id="Del"
+                  >
+                    Del
+                  </button>
+                </td>
+                <td style="width:33%" class="text-center border-0">
+                  <button
+                    type="button"
+                    class="num btn btn-outline-secondary rounded btn-block"
+                    style=" height:50px;"
+                    value="0"
+                  >
+                    0
+                  </button>
+                </td>
+                <td style="width:33%" class="text-center border-0">
+                  <button
+                    type="button"
+                    class="cut btn btn-outline-info rounded btn-block"
+                    style=" height:50px;"
+                    id="Enter"
+                  >
+                    Enter
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" style="width:33%" class="text-center border-0">
+                  <button
+                    id="start"
+                    type="button"
+                    class="btn btn-outline-warning rounded btn-block"
+                    style=" height:50px;"
+                    value="start"
+                  >
+                    Start
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      var input = document.getElementById("input");
+      var show = document.getElementById("show");
+      var mes = document.getElementById("mes");
+      var num = document.getElementsByClassName("num");
+      var Del = document.getElementById("Del");
+      var Enter = document.getElementById("Enter");
+      var start = document.getElementById("start");
+      var min = 0;
+      var max = 99;
+      var time = 6;
+      var ans = "";
+      start.onclick = doStart;
+      Enter.onclick = doEnter;
+      Del.onclick = doDel;
+
+      for (var i = 0; i < num.length; i++) {
+        num[i].onclick = getNum;
+      }
+      function doStart() {
+        doclear();
+        while (ans.length < 2) {
+          var number = Math.floor(Math.random() * 10);
+          ans += number;
+        }
+        show.innerText = "數字範圍 0~99";
+        mes.innerText = "遊戲開始，共六次機會";
+        return ans;
+      }
+
+      function getNum() {
+        // input.innerText += this.innerText;
+        if (input.value == "0") {
+          input.value = "";
+        }
+        if (input.value.length == 2) {
+          return;
+        }
+        input.value += this.value;
+        return input.value;
+      }
+      function doDel() {
+        var result = [];
+        for (var i = 0; i < input.value.length; i++) {
+          result += input.value[i];
+        }
+        str = result.substring(0, result.length - 1);
+        input.value = str;
+        return;
+      }
+
+      function doEnter() {
+        var input = document.getElementById("input");
+        var guess = input.value;
+
+        if (input.value == "") {
+          alert("請輸入數字");
+          return;
+        }
+        if (ans == "") {
+          alert("請按 Start");
+          return;
+        }
+        if (guess == ans) {
+          show.innerText = guess;
+          mes.innerText = "You Win ^.^";
+        }
+        if (guess < ans && guess < max) {
+          min = guess;
+          input.value = "";
+          show.innerText = min + "~" + max;
+          dotimes();
+        } else if (guess > ans && guess < max) {
+          max = guess;
+          input.value = "";
+          show.innerText = min + "~" + max;
+          dotimes();
+        }
+
+        return;
+      }
+
+      function doclear() {
+        number = "";
+        min = 0;
+        max = 99;
+        time = 6;
+        ans = "";
+        show.innerText = "";
+        mes.innerText = "";
+        input.value = "";
+      }
+
+      function dotimes() {
+        time--;
+        if(time != 0) {
+          mes.innerText = "還有" + time + "機會";
+        }        
+        else if (time == 0) {
+          show.innerText = "答案是：" + ans;
+          mes.innerText = "Game Over T.T";
+        }
+        return;
+      }
+    </script>
+  </body>
+</html>
