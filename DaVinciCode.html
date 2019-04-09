@@ -34,7 +34,7 @@
             <thead>
               <tr>
                 <td colspan="3" class="text-center border-0">
-                  <span id="show">0~99</span>
+                  <span id="show">Press Start</span>
                 </td>
               </tr>
               <tr>
@@ -210,7 +210,7 @@
       var min = 0;
       var max = 99;
       var time = 6;
-      var ans = "";
+      var ans = 0;
       start.onclick = doStart;
       Enter.onclick = doEnter;
       Del.onclick = doDel;
@@ -220,9 +220,11 @@
       }
       function doStart() {
         doclear();
-        while (ans.length < 2) {
+        var answer = "";
+        while (answer.length < 2) {
           var number = Math.floor(Math.random() * 10);
-          ans += number;
+          answer += number;
+          ans = parseInt(answer);
         }
         show.innerText = "數字範圍 0~99";
         mes.innerText = "遊戲開始，共六次機會";
@@ -252,7 +254,7 @@
 
       function doEnter() {
         var input = document.getElementById("input");
-        var guess = input.value;
+        var guess = parseInt(input.value);
 
         if (input.value == "") {
           alert("請輸入數字");
@@ -264,9 +266,11 @@
         }
         if (guess == ans) {
           show.innerText = guess;
-          mes.innerText = "You Win ^.^";
+          mes.innerText = "Game Over T.T";
         }
-        if (guess < ans && guess < max) {
+        if (guess > max || guess < min) {
+          alert("請確認數字範圍!!!")
+        } else if (guess < ans && guess < max) {
           min = guess;
           input.value = "";
           show.innerText = min + "~" + max;
@@ -294,12 +298,11 @@
 
       function dotimes() {
         time--;
-        if(time != 0) {
+        if (time != 0) {
           mes.innerText = "還有" + time + "機會";
-        }        
-        else if (time == 0) {
+        } else if (time == 0) {
           show.innerText = "答案是：" + ans;
-          mes.innerText = "Game Over T.T";
+          mes.innerText = "You Win ^.^";
         }
         return;
       }
